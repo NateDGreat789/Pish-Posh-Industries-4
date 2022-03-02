@@ -33,6 +33,8 @@ namespace Pish_Posh_Industries
             printbutton.Enabled = false;
             morebutton.Enabled = false;
             exitbutton.Enabled = false;
+
+            tenderedinput.Enabled = false;
         }
 
         private void givebutton_Click(object sender, EventArgs e)
@@ -41,6 +43,7 @@ namespace Pish_Posh_Industries
             registerPlayer.Play();
             
             tenderedbutton.Enabled = true;
+            tenderedinput.Enabled = true;
             
             try
             {
@@ -59,6 +62,20 @@ namespace Pish_Posh_Industries
                 subtotaloutput.Text = $"{subtotal.ToString("C")}";
                 taxoutput.Text = $"{tax.ToString("C")}";
                 totaloutput.Text = $"{total.ToString("C")}";
+
+                if (cars + houses + companies < 1)
+                {
+                    subtotallabel.Text = "BUY!!!!";
+                    taxlabel.Text = "";
+                    totallabel.Text = "";
+
+                    subtotaloutput.Text = "";
+                    taxoutput.Text = "";
+                    totaloutput.Text = "";
+
+                    tenderedbutton.Enabled = false;
+                    tenderedinput.Enabled = false;
+                }
             }
             catch
             {
@@ -71,7 +88,7 @@ namespace Pish_Posh_Industries
             printbutton.Enabled = true;
             SoundPlayer registerPlayer = new SoundPlayer(Properties.Resources.register);
             registerPlayer.Play();
-
+            
             try
             {
                 changelabel.Text = "Fine, we'll return your change.";
@@ -80,6 +97,13 @@ namespace Pish_Posh_Industries
                 change = tendered - total;
 
                 changeoutput.Text = $"{change.ToString("C")}";
+
+                if (change < 0)
+                {
+                    printbutton.Enabled = false;
+                    changelabel.Text = "MORE MONEY!!!!";
+                    changeoutput.Text = "";
+                }
             }
             catch
             {
@@ -93,17 +117,60 @@ namespace Pish_Posh_Industries
             registerPlayer.Play();
 
             exitbutton.Enabled = true;
-            receiptlabel.Text = "\n\n                Pish Posh Industries";
+            receiptlabel.Text = "\n\n                      Pish Posh Industries";
+            
+            Refresh();
+            Thread.Sleep(400);
+            
             receiptlabel.Text += $"\n   February 29, 2022";
-            receiptlabel.Text += $"\n   Cars                  x{cars} @ $100 000";
-            receiptlabel.Text += $"\n   Houses              x{houses} @ $5 000 000$";
-            receiptlabel.Text += $"\n   Companies         x{companies} @ 1 000 000 000";
+
+            if (cars > 0)
+            {
+                Refresh();
+                Thread.Sleep(400); receiptlabel.Text += $"\n   Cars                  x{cars} @ $100 000";
+            }
+
+            if (houses > 0)
+            {
+                Refresh();
+                Thread.Sleep(400); receiptlabel.Text += $"\n   Houses              x{houses} @ $5 000 000$";
+            }
+
+            if (companies > 0)
+            {
+                Refresh();
+                Thread.Sleep(400); receiptlabel.Text += $"\n   Companies         x{companies} @ 1 000 000 000";
+            }
+            
+            Refresh();
+            Thread.Sleep(400); 
+            
             receiptlabel.Text += $"\n\n   Subtotal             {subtotal.ToString("C")}";
+            
+            Refresh();
+            Thread.Sleep(400); 
+            
             receiptlabel.Text += $"\n   Tax                    {tax.ToString("C")}";
+            
+            Refresh();
+            Thread.Sleep(400); 
+            
             receiptlabel.Text += $"\n   Total                  {total.ToString("C")}";
+            Refresh();
+            
+            Thread.Sleep(400); 
+            
             receiptlabel.Text += $"\n\n   Tendered           {tendered.ToString("C")}";
+            
+            Refresh();
+            Thread.Sleep(400); 
+            
             receiptlabel.Text += $"\n   Change              {change.ToString("C")}";
-            receiptlabel.Text += $"\n\n   Pish Posh friend (any who gives money is a    friend)! ";
+            
+            Refresh();
+            Thread.Sleep(400); 
+            
+            receiptlabel.Text += $"\n\n   Pish Posh friend (any who gives money is a\n   friend)! ";
 
             morebutton.Enabled = true;
         }
@@ -120,8 +187,19 @@ namespace Pish_Posh_Industries
             taxoutput.Text = $"";
             totaloutput.Text = $"";
 
-            changelabel.Text = "Fine, we'll return your change.";
+            changelabel.Text = "";
             changeoutput.Text = $"";
+
+            carinput.Text = "0";
+            houseinput.Text = "0";
+            companyinput.Text = "0";
+
+            tenderedinput.Text = "0";
+
+            tenderedbutton.Enabled = false;
+            printbutton.Enabled = false;
+            morebutton.Enabled = false;
+            tenderedinput.Enabled = false;
         }
 
         private void exitbutton_Click(object sender, EventArgs e)

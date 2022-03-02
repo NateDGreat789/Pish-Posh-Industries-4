@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.titlelabel = new System.Windows.Forms.Label();
             this.givebutton = new System.Windows.Forms.Button();
             this.catchphraselabel = new System.Windows.Forms.Label();
@@ -120,7 +121,7 @@
             // 
             this.subtotallabel.Location = new System.Drawing.Point(35, 272);
             this.subtotallabel.Name = "subtotallabel";
-            this.subtotallabel.Size = new System.Drawing.Size(286, 27);
+            this.subtotallabel.Size = new System.Drawing.Size(77, 27);
             this.subtotallabel.TabIndex = 11;
             this.subtotallabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -202,8 +203,8 @@
             this.tenderedinput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tenderedinput.Location = new System.Drawing.Point(153, 363);
             this.tenderedinput.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
+            276447231,
+            23283,
             0,
             0});
             this.tenderedinput.Name = "tenderedinput";
@@ -281,10 +282,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 512);
+            this.Controls.Add(this.subtotaloutput);
             this.Controls.Add(this.exitbutton);
             this.Controls.Add(this.morebutton);
-            this.Controls.Add(this.subtotaloutput);
-            this.Controls.Add(this.subtotallabel);
             this.Controls.Add(this.receiptlabel);
             this.Controls.Add(this.printbutton);
             this.Controls.Add(this.changeoutput);
@@ -305,8 +305,10 @@
             this.Controls.Add(this.catchphraselabel);
             this.Controls.Add(this.givebutton);
             this.Controls.Add(this.titlelabel);
+            this.Controls.Add(this.subtotallabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Pish Posh Industries Storefront";
             ((System.ComponentModel.ISupportInitialize)(this.carinput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.houseinput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyinput)).EndInit();
